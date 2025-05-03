@@ -18,7 +18,7 @@
   "first_run": "",
   "build": {
     "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py src/models/*.py meta.json setup.sh reload.sh && chmod 777 module.tar.gz",
-    "path": "dist/archive.tar.gz",
+    "path": "module.tar.gz",
     "arch": ["linux/amd64", "linux/arm64"]
   }
 }
