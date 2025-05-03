@@ -1,0 +1,24 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "grant-dev:gpio-pin-sensor",
+  "visibility": "public",
+  "url": "",
+  "description": "Modular sensor component: gpio-pin-sensor",
+  "models": [
+    {
+      "api": "rdk:component:sensor",
+      "model": "grant-dev:gpio-pin-sensor:gpio-pin-sensor",
+      "short_description": "Provide a short (100 characters or less) description of this model here",
+      "markdown_link": "README.md#model-grant-devgpio-pin-sensorgpio-pin-sensor"
+    }
+  ],
+  "applications": null,
+  "markdown_link": "README.md",
+  "entrypoint": "reload.sh",
+  "first_run": "",
+  "build": {
+    "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py src/models/*.py meta.json setup.sh reload.sh && chmod 777 module.tar.gz",
+    "path": "dist/archive.tar.gz",
+    "arch": ["linux/amd64", "linux/arm64"]
+  }
+}
