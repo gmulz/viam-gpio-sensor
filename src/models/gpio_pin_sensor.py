@@ -3,7 +3,6 @@ from typing import (Any, ClassVar, Dict, Final, List, Mapping, Optional,
 
 from typing_extensions import Self
 from viam.components.board import Board
-from viam.components.board.board import GPIOPin
 from viam.components.sensor import Sensor
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import Geometry, ResourceName
@@ -71,8 +70,8 @@ class GpioPinSensor(Sensor, EasyResource):
             dependencies (Mapping[ResourceName, ResourceBase]): Any dependencies (both implicit and explicit)
         """
         attrs = config.attributes.fields
-        self.pin_name = attrs["pin"]
-        board_name = attrs["board"]
+        self.pin_name = attrs["pin"].string_value
+        board_name = attrs["board"].string_value
         self.board = dependencies[Board.get_resource_name(board_name)]
         return super().reconfigure(config, dependencies)
 
