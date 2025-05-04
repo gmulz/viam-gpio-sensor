@@ -32,7 +32,7 @@ The following attributes are available for this model:
 
 ```json
 {
-  "pin": 15,
+  "pin": "15",
   "board": "board-1"
 }
 ```
