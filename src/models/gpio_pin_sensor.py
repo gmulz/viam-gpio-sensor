@@ -78,14 +78,13 @@ class GpioPinSensor(Sensor, EasyResource):
     async def get_readings(
         self,
         *,
-        extra: Optional[Mapping[str, Any]] = None,
         timeout: Optional[float] = None,
         **kwargs
     ) -> Mapping[str, SensorReading]:
         pin = await self.board.gpio_pin_by_name(self.pin_name)
-        value = await pin.get(timeout=timeout, extra=extra)
+        value = await pin.get()
         reading = 1 if value else 0
-        return {"signal": SensorReading(name="signal", value=reading)}
+        return {"signal": reading}
 
     async def do_command(
         self,
