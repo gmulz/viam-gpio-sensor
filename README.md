@@ -1,18 +1,21 @@
-# Module gpio-pin-sensor 
+# Module gpio-pin-sensor
 
-Provide a description of the purpose of the module and any relevant information.
+A very simple sensor that reports the signal of a GPIO pin on a board
 
 ## Model grant-dev:gpio-pin-sensor:gpio-pin-sensor
 
-Provide a description of the model and any relevant information.
+A Sensor component that reports the GPIO pin signal on a board, 1 for high and 0 for low.
+
+This sensor essentially wraps the Board API's exiting GPIO pin functionality into the Sensor API, so GetReadings reports the pin signal. This may prove a useful abstraction so GPIO pins can be used in a modular way and swapped out with other kinds of sensors, or for use with very simple components like switches or buttons
 
 ### Configuration
+
 The following attribute template can be used to configure this model:
 
 ```json
 {
-"attribute_1": <float>,
-"attribute_2": <string>
+"pin": <string>,
+"board": <string>
 }
 ```
 
@@ -20,31 +23,20 @@ The following attribute template can be used to configure this model:
 
 The following attributes are available for this model:
 
-| Name          | Type   | Inclusion | Description                |
-|---------------|--------|-----------|----------------------------|
-| `attribute_1` | float  | Required  | Description of attribute 1 |
-| `attribute_2` | string | Optional  | Description of attribute 2 |
+| Name    | Type   | Inclusion | Description                              |
+| ------- | ------ | --------- | ---------------------------------------- |
+| `pin`   | string | Required  | The name/number of the pin               |
+| `board` | string | Required  | The name of the board that the pin is on |
 
 #### Example Configuration
 
 ```json
 {
-  "attribute_1": 1.0,
-  "attribute_2": "foo"
+  "pin": 15,
+  "board": "board-1"
 }
 ```
 
-### DoCommand
+### GetReadings
 
-If your model implements DoCommand, provide an example payload of each command that is supported and the arguments that can be used. If your model does not implement DoCommand, remove this section.
-
-#### Example DoCommand
-
-```json
-{
-  "command_name": {
-    "arg1": "foo",
-    "arg2": 1
-  }
-}
-```
+GetReadings will report 1 if the pin is high, and 0 if it is low
