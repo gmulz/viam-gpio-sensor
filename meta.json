@@ -8,7 +8,7 @@
     {
       "api": "rdk:component:sensor",
       "model": "grant-dev:gpio-pin-sensor:gpio-pin-sensor",
-      "short_description": "Provide a short (100 characters or less) description of this model here",
+      "short_description": "A simple sensor to report the signal on a GPIO pin",
       "markdown_link": "README.md#model-grant-devgpio-pin-sensorgpio-pin-sensor"
     }
   ],
